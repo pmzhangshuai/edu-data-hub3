@@ -1,70 +1,20 @@
 export interface HospitalData {
-  id: string;
-  name: string;
-  level: string;
-  affiliationType: string;
-  signDate: string;
-  validYears: number;
-  area: number;
-  clinicalDepartments: number;
-  wards: number;
-  medicalTechDepartments: number;
-  professionalBases: number;
-  standardizedTrainingBases: number;
-  specialistTrainingBases: number;
-  approvedBeds: number;
-  openBeds: number;
-  internalMedicineBeds: number;
-  surgeryBeds: number;
-  obstetricsGynecologyBeds: number;
-  pediatricsBeds: number;
-  teachingBeds: number;
-  keySpecialties: number;
-  nationalKeySpecialties: number;
-  nationalFeatureSpecialties: number;
-  provincialKeySpecialties: number;
-  provincialFeatureSpecialties: number;
-  municipalKeySpecialties: number;
-  keyDisciplines: number;
-  nationalKeyDisciplines: number;
-  provincialKeyDisciplines: number;
-  municipalKeyDisciplines: number;
-  totalEmployees: number;
-  medicalTechnicians: number;
-  seniorTitle: number;
-  seniorTitlePositive: number;
-  seniorTitleAssociate: number;
-  doctors: number;
-  doctorsInTraining: number;
-  masters: number;
-  mastersInTraining: number;
-  doctoralSupervisors: number;
-  masterSupervisors: number;
-  totalStudents: number;
-  guangyiStudents: number;
-  guangyiTheoreticalStudents: number;
-  zhuanshengbenStudents: number;
-  undergraduateStudents: number;
-  totalInterns: number;
-  guangyiInterns: number;
-  otherSchoolInterns: number;
-  totalGraduates: number;
-  totalResidents: number;
-  nationalExamLevel: string;
-  provincialExamLevel: string;
+  [key: string]: string | number | null;
 }
 
-export interface ChartData {
-  name: string;
-  value: number;
+export interface ReportRow {
+  level3: string | null;      // 三级指标
+  checkPoint: string | null;  // 考核点
+  standard: string | null;    // 具体标准要求（常模）
+  [hospital: string]: string | number | null; // 各医院数据
 }
 
-export interface SummaryData {
-  totalHospitals: number;
-  totalEmployees: number;
-  totalBeds: number;
-  totalStudents: number;
-  avgSeniorTitleRatio: number;
-  hospitalsByLevel: ChartData[];
-  hospitalsByAffiliation: ChartData[];
+export interface ReportSection {
+  title: string;       // 分类标题
+  rows: ReportRow[];   // 该分类下的行数据
+}
+
+export interface ReportData {
+  hospitals: string[];   // 医院列表
+  sections: ReportSection[]; // 报表各部分
 }
