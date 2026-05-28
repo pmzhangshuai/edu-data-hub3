@@ -1,14 +1,13 @@
 import React from 'react';
 import { AlertTriangle, CheckCircle, Copy } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
-import { Indicator } from '../types';
 import { mockRawData, hospitals } from '../data/mockData';
 
 const NormConfig: React.FC = () => {
-  const { config, getSelectedIndicators, getNormConfig, updateNormConfig } = useAppContext();
+  const { getSelectedIndicators, getNormConfig, updateNormConfig } = useAppContext();
   const selectedIndicators = getSelectedIndicators();
 
-  const evaluateNorm = (indicator: Indicator, normConfig: any, sampleValue: any) => {
+  const evaluateNorm = (_indicator: any, normConfig: any, sampleValue: any) => {
     if (normConfig.normType === 'threshold') {
       const op = normConfig.operator;
       const val = parseFloat(sampleValue);
@@ -32,7 +31,7 @@ const NormConfig: React.FC = () => {
     return data[hospital.id]?.[2024] || '';
   };
 
-  const getNormConfigOrDefault = (indicator: Indicator) => {
+  const getNormConfigOrDefault = (indicator: any) => {
     let config = getNormConfig(indicator.id);
     if (!config) {
       config = {

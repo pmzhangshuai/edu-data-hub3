@@ -1,7 +1,7 @@
 import React from 'react';
-import { Layout, Table as TableIcon, CheckSquare, Columns, Eye } from 'lucide-react';
+import { Layout, CheckSquare, Eye } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
-import { indicators, hospitals, years, mockRawData } from '../data/mockData';
+import { hospitals, years, mockRawData } from '../data/mockData';
 
 const TemplateLayout: React.FC = () => {
   const { config, updateLayoutConfig, getSelectedIndicators } = useAppContext();

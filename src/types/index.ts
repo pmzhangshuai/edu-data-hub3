@@ -12,10 +12,13 @@ export interface Hospital {
   name: string;
 }
 
+export type NormType = 'threshold' | 'range' | 'enum';
+export type NormOperator = '≥' | '≤' | '=';
+
 export interface NormConfig {
   indicatorId: string;
-  normType: 'threshold' | 'range' | 'enum';
-  operator?: '≥' | '≤' | '=';
+  normType: NormType;
+  operator?: NormOperator;
   thresholdValue?: number;
   min?: number;
   max?: number;

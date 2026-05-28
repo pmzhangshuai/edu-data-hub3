@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { AppConfig, Indicator, NormConfig, TemplateLayoutConfig } from '../types';
+import { AppConfig, Indicator, NormConfig, TemplateLayoutConfig, NormType } from '../types';
 import { defaultAppConfig, indicators } from '../data/mockData';
 
 interface AppContextType {
@@ -42,7 +42,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const updateNormConfig = (indicatorId: string, normConfig: Partial<NormConfig>) => {
     setConfig(prev => {
       const existingIndex = prev.normConfigs.findIndex(nc => nc.indicatorId === indicatorId);
-      let newNormConfigs;
+      let newNormConfigs: NormConfig[];
       
       if (existingIndex >= 0) {
         newNormConfigs = [...prev.normConfigs];
@@ -50,7 +50,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       } else {
         newNormConfigs = [...prev.normConfigs, {
           indicatorId,
-          normType: 'threshold',
+          normType: 'threshold' as NormType,
           passLabel: '达标',
           weight: 5,
           ...normConfig

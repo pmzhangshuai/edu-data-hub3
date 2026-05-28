@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react';
 import { Search, CheckSquare, Square, ListTree, Info } from 'lucide-react';
-import { Indicator } from '../types';
 import { indicators } from '../data/mockData';
 import { useAppContext } from '../context/AppContext';
 
